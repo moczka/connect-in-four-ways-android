@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
     app:startDestination="@id/homepageFragment">
-
     <fragment
         android:id="@+id/homepageFragment"
         android:name="com.example.connectfourways.HomepageFragment"
         android:label="fragment_homepage"
         tools:layout="@layout/fragment_homepage" >
         <action
-            android:id="@+id/action_homepageFragment_to_gamePlayFragment"
+            android:id="@+id/startGameplay"
             app:destination="@id/gamePlayFragment" />
         <action
-            android:id="@+id/action_homepageFragment_to_scoresFragment"
+            android:id="@+id/viewScores"
             app:destination="@id/scoresFragment" />
         <action
-            android:id="@+id/action_homepageFragment_to_configurationsFragment"
+            android:id="@+id/configureApp"
             app:destination="@id/configurationsFragment" />
     </fragment>
     <fragment

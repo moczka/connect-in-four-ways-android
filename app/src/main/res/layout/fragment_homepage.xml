@@ -3,12 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/standard_page_horizontal_padding"
+    android:paddingVertical="@dimen/standard_page_vertical_padding"
     tools:context=".HomepageFragment">
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="This is the home page" />
-
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/homepage_play_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/homepage_button_controls_bottom_margin"
+            android:text="@string/homepage_gameplay_button_label"
+            />
+        <Button
+            android:id="@+id/homepage_scores_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/homepage_button_controls_bottom_margin"
+            android:text="@string/homepage_scores_button_label"
+            />
+        <Button
+            android:id="@+id/homepage_settings_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/homepage_button_controls_bottom_margin"
+            android:text="@string/homepage_settings_button_label"
+            />
+    </LinearLayout>
 </FrameLayout>

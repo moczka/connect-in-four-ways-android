@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="standard_page_vertical_padding">16dp</dimen>
+    <dimen name="standard_page_horizontal_padding">16dp</dimen>
+    <dimen name="homepage_button_controls_bottom_margin">24dp</dimen>
+</resources>
