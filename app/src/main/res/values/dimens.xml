@@ -3,4 +3,8 @@
     <dimen name="standard_page_vertical_padding">16dp</dimen>
     <dimen name="standard_page_horizontal_padding">16dp</dimen>
     <dimen name="homepage_button_controls_bottom_margin">24dp</dimen>
+    <dimen name="homepage_title_font_size">32sp</dimen>
+    <dimen name="homepage_title_bottom_margin">32dp</dimen>
+    <dimen name="homepage_buttons_text_size">24sp</dimen>
+    <dimen name="homepage_title_top_margin">40dp</dimen>
 </resources>

@@ -7,4 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- CUSTOM COLORS -->
+    <color name="primary_background">#F4E9D7</color>
+    <color name="primary_over_background">#B8C4A9</color>
+    <color name="secondary_positive">#D97D55</color>
+    <color name="secondary_negative">#6FA4AF</color>
+    <!-- STATIC COLOR VARIABLES -->
+    <color name="homepage_title_color">#D97D55</color>
+
 </resources>

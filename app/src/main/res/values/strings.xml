@@ -5,4 +5,5 @@
     <string name="homepage_gameplay_button_label">Play</string>
     <string name="homepage_scores_button_label">Scores</string>
     <string name="homepage_settings_button_label">Settings</string>
+    <string name="string_homepage_title">Get Ready To Play!</string>
 </resources>

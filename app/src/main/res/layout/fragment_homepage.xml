@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_background"
     android:paddingHorizontal="@dimen/standard_page_horizontal_padding"
     android:paddingVertical="@dimen/standard_page_vertical_padding"
     tools:context=".HomepageFragment">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is the home page" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/homepage_title_color"
+        android:textSize="@dimen/homepage_title_font_size"
+        android:layout_marginTop="@dimen/homepage_title_top_margin"
+        android:layout_marginBottom="@dimen/homepage_title_bottom_margin"
+        android:text="@string/string_homepage_title" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -19,12 +27,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/homepage_button_controls_bottom_margin"
+            android:textSize="@dimen/homepage_buttons_text_size"
             android:text="@string/homepage_gameplay_button_label"
             />
         <Button
             android:id="@+id/homepage_scores_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/homepage_buttons_text_size"
             android:layout_marginBottom="@dimen/homepage_button_controls_bottom_margin"
             android:text="@string/homepage_scores_button_label"
             />
@@ -33,7 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/homepage_button_controls_bottom_margin"
+            android:textSize="@dimen/homepage_buttons_text_size"
             android:text="@string/homepage_settings_button_label"
             />
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>
