@@ -2,6 +2,7 @@ package com.example.connectfourways
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Paint
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import android.util.Log
@@ -61,8 +62,6 @@ class GamePlayFragment : Fragment() {
                 boardSlotIds[rowIndex][colIndex] = slotId
                 slotWidget.tag = colIndex
                 slotWidget.setOnClickListener(::handleSlotClick)
-                slotWidget.setBackgroundColor(resources.getColor(R.color.black))
-                slotWidget.setPadding(resources.getDimensionPixelSize(R.dimen.cell_slot_padding))
                 slotWidget.setImageBitmap(createSlotImage(binding.gameboard.width, false, getSlotInformation(colIndex, rowIndex)))
                 // Add slot to row
                 tableRow.addView(slotWidget)
@@ -101,8 +100,19 @@ class GamePlayFragment : Fragment() {
         val slotDimensions = calculateSlotDimensions(boardWidth)
         val image = createBitmap(slotDimensions.first, slotDimensions.second)
         val canvas = Canvas(image)
-        val backgroundColor = getSlotBackgroundColor(player)
+        val backgroundColor = resources.getColor(R.color.gameplay_board_color)
         canvas.drawColor(backgroundColor)
+        // configure disc color
+        val discColor = Paint().apply {
+            color = getDiscColor(player)
+            style = Paint.Style.FILL
+            isAntiAlias = true
+        }
+        val centerX = slotDimensions.first / 2f
+        val centerY = slotDimensions.second / 2f
+        val radius = centerX * .70f
+        // draw disc
+        canvas.drawCircle(centerX, centerY, radius, discColor)
         return image;
     }
     private fun getSlotInformation(colIndex: Int, rowIndex: Int): String {
@@ -120,16 +130,16 @@ class GamePlayFragment : Fragment() {
         return Pair(slotWidth, slotWidth)
     }
 
-    private fun getSlotBackgroundColor(player: String): Int {
+    private fun getDiscColor(player: String): Int {
         when(player) {
             "P1" -> {
-                return resources.getColor(R.color.secondary_positive)
+                return resources.getColor(R.color.gameplay_board_disc_primary)
             }
             "P2" -> {
-                return resources.getColor(R.color.secondary_negative)
+                return resources.getColor(R.color.gameplay_board_disc_secondary)
             }
         }
-        return resources.getColor(R.color.primary_over_background)
+        return resources.getColor(R.color.gameplay_page_background_color)
     }
 
     private fun processTurn(player: String, colIndex: Int) {

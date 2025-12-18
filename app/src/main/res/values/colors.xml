@@ -13,6 +13,12 @@
     <color name="secondary_positive">#D97D55</color>
     <color name="secondary_negative">#6FA4AF</color>
     <!-- STATIC COLOR VARIABLES -->
+    <!-- HOMEPAGE -->
     <color name="homepage_title_color">#D97D55</color>
+    <!-- GAMEPLAY PAGE -->
+    <color name="gameplay_page_background_color">#F4E9D7</color>
+    <color name="gameplay_board_color">#B8C4A9</color>
+    <color name="gameplay_board_disc_primary">#D97D55</color>
+    <color name="gameplay_board_disc_secondary">#6FA4AF</color>
 
 </resources>
