@@ -3,12 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="@dimen/standard_page_vertical_padding"
+    android:paddingHorizontal="@dimen/standard_page_horizontal_padding"
     android:background="@color/primary_background"
     tools:context=".GamePlayFragment">
-
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="This is the gameplay fragment" />
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/gameplay_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/gameboard_container"
+            android:layout_marginBottom="@dimen/gameplay_information_bottom_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/gameplay_time_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="@dimen/gameplay_information_label_text_size"
+                tools:text="Time: XXXX seconds" />
+            <TextView
+                android:id="@+id/player_turn_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="@dimen/gameplay_information_label_text_size"
+                tools:text="Turn: Player1 | P2"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/gameboard_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/gameplay_information"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <TableLayout
+                android:id="@+id/gameboard"
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
