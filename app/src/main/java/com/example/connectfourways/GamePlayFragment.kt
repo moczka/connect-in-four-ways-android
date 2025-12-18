@@ -62,6 +62,9 @@ class GamePlayFragment : Fragment() {
             if (binding.gameboard.isEmpty())
                 createBoard()
         }
+        // Output player turn information
+        binding.playerTurnInfo.text = resources.getString(R.string.player_turn_info, viewModel.activePlayer)
+        binding.playerTurnInfo.setTextColor(getDiscColor(viewModel.activePlayer))
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.gameTime.collect { gameTime ->
@@ -169,7 +172,7 @@ class GamePlayFragment : Fragment() {
         }
         // Update who's turn it is
         viewModel.activePlayer = if (viewModel.activePlayer == "P1") "P2" else "P1"
-        binding.playerTurnInfo.text = resources.getString(R.string.player_turn_info, player)
+        binding.playerTurnInfo.text = resources.getString(R.string.player_turn_info, viewModel.activePlayer)
         binding.playerTurnInfo.setTextColor(getDiscColor(viewModel.activePlayer))
         // check if there is a winner
         // TODO: ADD ALGORITHM TO CHECK IF THERE IS A WINNER
