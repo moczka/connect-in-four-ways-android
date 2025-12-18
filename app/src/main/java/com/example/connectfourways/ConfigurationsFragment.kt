@@ -1,3 +1,10 @@
+/*
+    Author:     Javier Steven Guerrero
+    Course:     CSI 357 Android Development
+    Date:       Dec 16, 2025
+
+    Description: Where the game play happens. It renders the Connect 4 board.
+ */
 package com.example.connectfourways
 
 import androidx.fragment.app.viewModels
