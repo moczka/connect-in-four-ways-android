@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,8 +15,11 @@ import android.widget.ImageView
 import android.widget.TableRow
 import androidx.core.graphics.createBitmap
 import androidx.core.view.isEmpty
-import androidx.core.view.setPadding
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.connectfourways.databinding.FragmentGamePlayBinding
+import kotlinx.coroutines.launch
 
 private const val TAG = "GamePlayFragment"
 private const val BOARD_NUM_ROW = 6
@@ -50,6 +54,14 @@ class GamePlayFragment : Fragment() {
             if (binding.gameboard.isEmpty())
                 createBoard()
         }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.gameTime.collect { gameTime ->
+                    updateTimer(gameTime)
+                }
+            }
+        }
+
     }
     private fun createBoard() {
         for (rowIndex in 0 until BOARD_NUM_ROW) {
@@ -141,11 +153,27 @@ class GamePlayFragment : Fragment() {
         }
         return resources.getColor(R.color.gameplay_page_background_color)
     }
-
     private fun processTurn(player: String, colIndex: Int) {
+        // start game if it hasn't
+        if (!viewModel.hasGameStarted) {
+            viewModel.hasGameStarted = true
+            viewModel.startTimer();
+        }
         // Update who's turn it is
         viewModel.activePlayer = if (viewModel.activePlayer == "P1") "P2" else "P1"
+        binding.playerTurnInfo.text = resources.getString(R.string.player_turn_info, player)
+        binding.playerTurnInfo.setTextColor(getDiscColor(viewModel.activePlayer))
         // check if there is a winner
         // TODO: ADD ALGORITHM TO CHECK IF THERE IS A WINNER
+    }
+
+    private fun updateTimer(secondsPassed: Int) {
+        binding.gameplayTimeInfo.text = resources.getString(R.string.time_counter, DateUtils.formatElapsedTime(secondsPassed.toLong()))
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        // Prevent memory leaks
+        _binding = null
     }
 }

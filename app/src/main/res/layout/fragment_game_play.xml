@@ -31,6 +31,7 @@
                 android:layout_centerVertical="true"
                 android:textStyle="bold"
                 android:textSize="@dimen/gameplay_information_label_text_size"
+                android:text="@string/time_counter"
                 tools:text="Time: XXXX seconds" />
             <TextView
                 android:id="@+id/player_turn_info"

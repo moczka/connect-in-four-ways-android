@@ -6,4 +6,6 @@
     <string name="homepage_scores_button_label">Scores</string>
     <string name="homepage_settings_button_label">Settings</string>
     <string name="string_homepage_title">Get Ready To Play!</string>
+    <string name="time_counter">Time: %s</string>
+    <string name="player_turn_info">Turn: %s</string>
 </resources>
