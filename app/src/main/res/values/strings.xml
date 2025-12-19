@@ -8,4 +8,5 @@
     <string name="string_homepage_title">Get Ready To Play!</string>
     <string name="time_counter">Time: %s</string>
     <string name="player_turn_info">Turn: %s</string>
+    <string name="announce_winner">Congratulations %s, You Won!</string>
 </resources>

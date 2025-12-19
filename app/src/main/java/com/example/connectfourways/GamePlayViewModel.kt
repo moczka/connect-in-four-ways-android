@@ -27,10 +27,13 @@ class GamePlayViewModel : ViewModel() {
     val gameTime: StateFlow<Int> = _gameTime
     private var timerJob: Job? = null
 
-    fun finalizeGame() {
-        // end game!
+    fun finalizeGame(winner: String) {
+        // update game state variables
         hasGameEnded = true
+        // Pause game time
+        stopTimer()
         // write game record to database
+        // TODO: add call to repository to write game record
     }
     fun startTimer() {
         timerJob?.cancel() // Cancel any existing job

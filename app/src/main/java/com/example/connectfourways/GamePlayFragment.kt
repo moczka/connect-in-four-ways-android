@@ -21,6 +21,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TableRow
+import android.widget.Toast
 import androidx.core.graphics.createBitmap
 import androidx.core.view.isEmpty
 import androidx.lifecycle.Lifecycle
@@ -179,13 +180,17 @@ class GamePlayFragment : Fragment() {
         }
         // check if there is a winner
         val playerHasWon = checkForWin(colIndex, viewModel.boardColumns[colIndex].size -1, player)
-        if (playerHasWon) {
-            // End game here
-            Log.d(TAG, "The game has ended! ${player} WINS!")
-            viewModel.finalizeGame();
-        }
+        if (playerHasWon)
+            endGame(player)
         // this code can be moved to a reusable function
         updatePlayerTurnInformation(!playerHasWon)
+    }
+
+    private fun endGame(winner: String) {
+        // inform view model
+        viewModel.finalizeGame(winner);
+        // Announce winner
+        Toast.makeText(context, getString(R.string.announce_winner, winner), Toast.LENGTH_LONG).show()
     }
     // Checks if there has been a winner
     private fun checkForWin(col: Int, row: Int, player: String): Boolean {
