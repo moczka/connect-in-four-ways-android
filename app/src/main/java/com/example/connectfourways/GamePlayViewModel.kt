@@ -21,10 +21,17 @@ class GamePlayViewModel : ViewModel() {
     var activePlayer = "P1"
     val boardColumns = Array(BOARD_NUM_COL){ mutableListOf<String>() }
     var hasGameStarted = false
+
+    var hasGameEnded = false
     private val _gameTime = MutableStateFlow(0)
     val gameTime: StateFlow<Int> = _gameTime
     private var timerJob: Job? = null
 
+    fun finalizeGame() {
+        // end game!
+        hasGameEnded = true
+        // write game record to database
+    }
     fun startTimer() {
         timerJob?.cancel() // Cancel any existing job
         timerJob = viewModelScope.launch {

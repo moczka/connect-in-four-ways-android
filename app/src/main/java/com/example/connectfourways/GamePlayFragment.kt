@@ -32,6 +32,14 @@ import kotlinx.coroutines.launch
 private const val TAG = "GamePlayFragment"
 private const val BOARD_NUM_ROW = 6
 private const val BOARD_NUM_COL = 7
+private const val CONNECT_DISC_NUM = 4
+// Used to check for winner
+private val WINNING_COMBINATIONS = arrayOf(
+    intArrayOf(1, 0),  // Discs aligned horizontally
+    intArrayOf(0, 1),  // Discs stacked
+    intArrayOf(1, 1),  // Discs aligned (Diagonally) North-East direction
+    intArrayOf(1, -1)  // Discs aligned (Diagonally) South-East direction
+)
 class GamePlayFragment : Fragment() {
     private var _binding: FragmentGamePlayBinding? = null;
     private val binding
@@ -63,8 +71,7 @@ class GamePlayFragment : Fragment() {
                 createBoard()
         }
         // Output player turn information
-        binding.playerTurnInfo.text = resources.getString(R.string.player_turn_info, viewModel.activePlayer)
-        binding.playerTurnInfo.setTextColor(getDiscColor(viewModel.activePlayer))
+        updatePlayerTurnInformation(false)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.gameTime.collect { gameTime ->
@@ -95,8 +102,8 @@ class GamePlayFragment : Fragment() {
 
     private fun handleSlotClick(view: View) {
         val colIndex: Int = view.tag as Int
-        // Do nothing if column is full
-        if (viewModel.boardColumns[colIndex].size == BOARD_NUM_ROW)
+        // Do nothing if board is full or there has been a winner
+        if (viewModel.boardColumns[colIndex].size == BOARD_NUM_ROW || viewModel.hasGameEnded)
             return
         Log.d(TAG, "User has dropped disc in column: ${view.tag}")
         // place disc in column
@@ -170,16 +177,59 @@ class GamePlayFragment : Fragment() {
             viewModel.hasGameStarted = true
             viewModel.startTimer();
         }
-        // Update who's turn it is
-        viewModel.activePlayer = if (viewModel.activePlayer == "P1") "P2" else "P1"
-        binding.playerTurnInfo.text = resources.getString(R.string.player_turn_info, viewModel.activePlayer)
-        binding.playerTurnInfo.setTextColor(getDiscColor(viewModel.activePlayer))
         // check if there is a winner
-        // TODO: ADD ALGORITHM TO CHECK IF THERE IS A WINNER
+        val playerHasWon = checkForWin(colIndex, viewModel.boardColumns[colIndex].size -1, player)
+        if (playerHasWon) {
+            // End game here
+            Log.d(TAG, "The game has ended! ${player} WINS!")
+            viewModel.finalizeGame();
+        }
+        // this code can be moved to a reusable function
+        updatePlayerTurnInformation(!playerHasWon)
+    }
+    // Checks if there has been a winner
+    private fun checkForWin(col: Int, row: Int, player: String): Boolean {
+        // Based on location where disc was dropped into, counts discs for player in winning combinations
+        for (combination in WINNING_COMBINATIONS) {
+            var count = 1 // Start with the disc just placed
+            // Check in the positive direction
+            count += countInDirection(col, row, combination[0], combination[1], player)
+            // Check in the negative direction
+            count += countInDirection(col, row, -combination[0], -combination[1], player)
+            if (count >= CONNECT_DISC_NUM) return true
+        }
+        return false
+    }
+    // Helper function that counts the number of discs in set direction
+    private fun countInDirection(fromColumnIndex: Int, fromRowIndex: Int, toColumnIndex: Int, toRowIndex: Int, player: String): Int {
+        var currCount = 0
+        var colIndex = fromColumnIndex + toColumnIndex
+        var rowIndex = fromRowIndex + toRowIndex
+
+        // Keep moving in the direction while within bounds and matching the playerTag
+        while (colIndex in 0 until BOARD_NUM_COL &&
+            rowIndex >= 0 && rowIndex < viewModel.boardColumns[colIndex].size &&
+            viewModel.boardColumns[colIndex][rowIndex] == player) {
+            currCount++
+            // Move to next position
+            colIndex += toColumnIndex
+            rowIndex += toRowIndex
+        }
+        return currCount
     }
 
+    // Updates the game timer
     private fun updateTimer(secondsPassed: Int) {
         binding.gameplayTimeInfo.text = resources.getString(R.string.time_counter, DateUtils.formatElapsedTime(secondsPassed.toLong()))
+    }
+    private fun updatePlayerTurnInformation(swapPlayer: Boolean) {
+        if (swapPlayer) {
+            // Update who's turn it is
+            viewModel.activePlayer = if (viewModel.activePlayer == "P1") "P2" else "P1"
+        }
+        // Update UI
+        binding.playerTurnInfo.text = resources.getString(R.string.player_turn_info, viewModel.activePlayer)
+        binding.playerTurnInfo.setTextColor(getDiscColor(viewModel.activePlayer))
     }
 
     override fun onDestroyView() {
