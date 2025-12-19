@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">ConnectFourWays</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="homepage_gameplay_button_label">Play</string>
     <string name="homepage_scores_button_label">Scores</string>
@@ -8,4 +7,6 @@
     <string name="string_homepage_title">Get Ready To Play!</string>
     <string name="time_counter">Time: %s</string>
     <string name="player_turn_info">Turn: %s</string>
+    <string name="player1_title">Player 1:</string>
+    <string name="player2_title">Player 2:</string>
 </resources>

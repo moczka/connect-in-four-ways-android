@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:padding="32sp"
+    android:background="@color/player_names_dialog_background_color">
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/homepage_title_color"
+        android:textSize="@dimen/homepage_title_font_size"
+        android:layout_marginTop="@dimen/homepage_title_top_margin"
+        android:text="@string/player1_title"/>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/player1Name"
+            android:hint="P1"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/homepage_title_color"
+            android:textSize="24dp" />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/homepage_title_color"
+        android:textSize="@dimen/homepage_title_font_size"
+        android:layout_marginTop="@dimen/homepage_title_top_margin"
+        android:text="@string/player2_title"/>
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/player2Name"
+        android:hint="P2"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/homepage_title_color"
+        android:textSize="24dp" />
+
+    <Button
+        android:id="@+id/homepage_scores_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/homepage_buttons_text_size"
+        android:layout_marginBottom="@dimen/homepage_button_controls_bottom_margin"
+        android:layout_marginTop="@dimen/homepage_title_top_margin"
+        android:text="Start"
+        />
+</LinearLayout>

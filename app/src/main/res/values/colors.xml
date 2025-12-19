@@ -20,5 +20,7 @@
     <color name="gameplay_board_color">#B8C4A9</color>
     <color name="gameplay_board_disc_primary">#D97D55</color>
     <color name="gameplay_board_disc_secondary">#6FA4AF</color>
+    <!-- PLAYER NAMES FRAGMENT -->
+    <color name="player_names_dialog_background_color">#80F4E9D7</color>
 
 </resources>
