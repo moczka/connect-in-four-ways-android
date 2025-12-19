@@ -38,4 +38,9 @@ class GamePlayViewModel : ViewModel() {
     fun stopTimer() {
         timerJob?.cancel()
     }
+
+    // Create new record in database once game is over.
+    fun finalizeGame() {
+
+    }
 }
