@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class ScoresViewModel : ViewModel() {
+class GameHistoryViewModel : ViewModel() {
     private val gameRepository = GameRepository.get()
 
     private val _gameList = MutableStateFlow<List<GameRecord>>(emptyList())

@@ -9,4 +9,5 @@
     <string name="player_turn_info">Turn: %s</string>
     <string name="player1_title">Player 1:</string>
     <string name="player2_title">Player 2:</string>
+    <string name="game_record_winner">Winner: %s</string>
 </resources>

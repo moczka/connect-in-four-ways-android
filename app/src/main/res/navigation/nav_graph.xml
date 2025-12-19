@@ -26,9 +26,9 @@
         tools:layout="@layout/fragment_game_play" />
     <fragment
         android:id="@+id/scoresFragment"
-        android:name="com.example.connectfourways.ScoresFragment"
+        android:name="com.example.connectfourways.GameHistoryFragment"
         android:label="fragment_scores"
-        tools:layout="@layout/fragment_scores" />
+        tools:layout="@layout/fragment_game_history" />
     <fragment
         android:id="@+id/configurationsFragment"
         android:name="com.example.connectfourways.ConfigurationsFragment"

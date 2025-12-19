@@ -18,10 +18,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.connectfourways.databinding.FragmentScoresBinding
 import kotlinx.coroutines.launch
 
-class ScoresFragment : Fragment() {
+class GameHistoryFragment : Fragment() {
     private var _binding: FragmentScoresBinding? = null
 
-    private val scoresViewModel: ScoresViewModel by viewModels()
+    private val gameHistoryViewModel: GameHistoryViewModel by viewModels()
 
     private val binding
         get() = checkNotNull(_binding) {
@@ -50,7 +50,7 @@ class ScoresFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                scoresViewModel.gameList.collect { games ->
+                gameHistoryViewModel.gameList.collect { games ->
                     // Update the UI
                     binding.recyclerView.adapter = GameAdapter(games)
                 }
