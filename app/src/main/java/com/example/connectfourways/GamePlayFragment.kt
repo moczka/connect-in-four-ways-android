@@ -96,7 +96,7 @@ class GamePlayFragment : Fragment() {
     private fun handleSlotClick(view: View) {
         val colIndex: Int = view.tag as Int
         // Do nothing if column is full
-        if (viewModel.boardColumns[colIndex].size == BOARD_NUM_COL)
+        if (viewModel.boardColumns[colIndex].size == BOARD_NUM_ROW)
             return
         Log.d(TAG, "User has dropped disc in column: ${view.tag}")
         // place disc in column
@@ -109,7 +109,7 @@ class GamePlayFragment : Fragment() {
         // active column
         val selectedColumn = viewModel.boardColumns[colIndex]
         // Compute slot location relative to the graphical board grid
-        val rowIndex = (BOARD_NUM_ROW - selectedColumn.size) % BOARD_NUM_ROW
+        val rowIndex = (BOARD_NUM_ROW - selectedColumn.size) - 1
         // update slot in graphical board grid to show placed disc
         val widgetId = boardSlotIds[rowIndex][colIndex]
         val slotImage: ImageView? = view?.findViewById<ImageView>(widgetId)
