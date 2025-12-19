@@ -8,6 +8,6 @@ package com.example.connectfourways
 
 import androidx.lifecycle.ViewModel
 
-class ScoresViewModel : ViewModel() {
+class GameHistoryViewModel : ViewModel() {
     // TODO: Implement the ViewModel
 }

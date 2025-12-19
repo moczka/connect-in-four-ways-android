@@ -178,6 +178,13 @@ class GamePlayFragment : Fragment() {
             viewModel.hasGameStarted = true
             viewModel.startTimer();
         }
+
+        // persist player's moves
+        if (player == "P1")
+            viewModel.player1Moves.add(colIndex.toString())
+        else
+            viewModel.player2Moves.add(colIndex.toString())
+
         // check if there is a winner
         val playerHasWon = checkForWin(colIndex, viewModel.boardColumns[colIndex].size -1, player)
         if (playerHasWon)
