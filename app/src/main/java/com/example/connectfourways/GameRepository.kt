@@ -1,3 +1,8 @@
+/*
+    Author:     Jessica Nguyen
+    Course:     CSI 357 Android Development
+    Date:       Dec 19, 2025
+ */
 package com.example.connectfourways
 
 import android.content.Context

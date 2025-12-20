@@ -20,6 +20,7 @@
                 android:padding="@dimen/table_col_heading_vertical_padding"
                 android:gravity="start"
                 android:textStyle="bold"
+                android:textSize="@dimen/table_col_heading_text_size"
                 android:text="@string/winner_column_label" />
 
             <TextView
@@ -28,6 +29,7 @@
                 android:padding="@dimen/table_col_heading_vertical_padding"
                 android:gravity="center"
                 android:textStyle="bold"
+                android:textSize="@dimen/table_col_heading_text_size"
                 android:text="@string/game_players_col_label" />
 
             <TextView
@@ -36,6 +38,7 @@
                 android:padding="@dimen/table_col_heading_vertical_padding"
                 android:gravity="start"
                 android:textStyle="bold"
+                android:textSize="@dimen/table_col_heading_text_size"
                 android:text="@string/game_date_col_label" />
 
             <TextView
@@ -44,6 +47,7 @@
                 android:padding="@dimen/table_col_heading_vertical_padding"
                 android:gravity="end"
                 android:textStyle="bold"
+                android:textSize="@dimen/table_col_heading_text_size"
                 android:text="@string/game_duration_col_label" />
         </TableRow>
 

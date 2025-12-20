@@ -1,8 +1,7 @@
 /*
-    Author:     Javier Steven Guerrero
+    Author:     Jessica Nguyen
     Course:     CSI 357 Android Development
-    Date:       Dec 16, 2025
-
+    Date:       Dec 19, 2025
  */
 package com.example.connectfourways
 
