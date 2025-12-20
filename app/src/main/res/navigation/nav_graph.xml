@@ -14,7 +14,7 @@
             app:destination="@id/gamePlayFragment" />
         <action
             android:id="@+id/viewScores"
-            app:destination="@id/scoresFragment" />
+            app:destination="@id/gameHistoryFragment" />
         <action
             android:id="@+id/configureApp"
             app:destination="@id/configurationsFragment" />
@@ -25,10 +25,10 @@
         android:label="fragment_game_play"
         tools:layout="@layout/fragment_game_play" />
     <fragment
-        android:id="@+id/scoresFragment"
-        android:name="com.example.connectfourways.ScoresFragment"
-        android:label="fragment_scores"
-        tools:layout="@layout/fragment_scores" />
+        android:id="@+id/gameHistoryFragment"
+        android:name="com.example.connectfourways.GameHistoryFragment"
+        android:label="fragment_game_history"
+        tools:layout="@layout/fragment_game_history" />
     <fragment
         android:id="@+id/configurationsFragment"
         android:name="com.example.connectfourways.ConfigurationsFragment"

@@ -8,5 +8,13 @@
     <string name="string_homepage_title">Get Ready To Play!</string>
     <string name="time_counter">Time: %s</string>
     <string name="player_turn_info">Turn: %s</string>
+    <string name="announce_draw">It\'s a Draw!</string>
     <string name="announce_winner">Congratulations %s, You Won!</string>
+    <string name="winner_column_label">Winner</string>
+    <string name="game_players_col_label">Players</string>
+    <string name="game_date_col_label">Date</string>
+    <string name="game_duration_col_label">Duration</string>
+    <string name="game_players_field">%s vs %s</string>
+    <string name="game_duration_field">%s s</string>
+
 </resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/primary_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:id="@+id/game_history_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1,2"
+        tools:context=".GameHistoryFragment">
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/table_col_heading_vertical_padding"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:text="@string/winner_column_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/table_col_heading_vertical_padding"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="@string/game_players_col_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/table_col_heading_vertical_padding"
+                android:gravity="start"
+                android:textStyle="bold"
+                android:text="@string/game_date_col_label" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/table_col_heading_vertical_padding"
+                android:gravity="end"
+                android:textStyle="bold"
+                android:text="@string/game_duration_col_label" />
+        </TableRow>
+
+    </TableLayout>
+</ScrollView>
