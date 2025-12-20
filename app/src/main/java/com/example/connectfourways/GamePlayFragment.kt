@@ -185,6 +185,10 @@ class GamePlayFragment : Fragment() {
         else
             viewModel.player2Moves.add(colIndex.toString())
 
+        // check if the board is full
+        if (viewModel.boardColumns.all { it.size == BOARD_NUM_ROW })
+            endGame("Draw")
+
         // check if there is a winner
         val playerHasWon = checkForWin(colIndex, viewModel.boardColumns[colIndex].size -1, player)
         if (playerHasWon)
@@ -196,8 +200,13 @@ class GamePlayFragment : Fragment() {
     private fun endGame(winner: String) {
         // inform view model
         viewModel.finalizeGame(winner);
+
+        // Announce draw
+        if (winner == "Draw")
+            Toast.makeText(context, getString(R.string.announce_draw), Toast.LENGTH_LONG).show()
+        else
         // Announce winner
-        Toast.makeText(context, getString(R.string.announce_winner, winner), Toast.LENGTH_LONG).show()
+            Toast.makeText(context, getString(R.string.announce_winner, winner), Toast.LENGTH_LONG).show()
     }
     // Checks if there has been a winner
     private fun checkForWin(col: Int, row: Int, player: String): Boolean {
